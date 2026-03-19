@@ -1,0 +1,31 @@
+.books-grid {
+  display: grid;
+  gap: 16px;
+
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+}
+
+@media (max-width: 768px) {
+  .books-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.book-card:hover {
+  transform: translateY(-3px);
+  transition: 0.2s;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.back-icon {
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--primary);
+}
+
