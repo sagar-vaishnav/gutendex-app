@@ -93,28 +93,28 @@ export default function BooksPage() {
     if (loading) return;
   };
 
-  return (    
+  return (
     <div className="home-container">
-    <div className="content">
-      <div className="header">
-        <span className="back-icon" onClick={() => navigate(-1)}>
-          <img src={getIcon(backIcon)} className="icon" />
-        </span>
+      <div className="content">
+        <div className="header">
+          <span className="back-icon" onClick={() => navigate(-1)}>
+            <img src={getIcon(backIcon)} className="icon" />
+          </span>
 
-        <h2 className="page-title">{genre}</h2>
+          <h2 className="page-title">{genre}</h2>
+        </div>
+
+        <SearchBar value={search} onChange={setSearch} />
+
+        <div className="books-grid">
+          {books
+            .filter((b) => b.formats["image/jpeg"])
+            .map((b) => (
+              <BookCard key={b.id} book={b} onClick={() => openBook(b)} />
+            ))}
+        </div>
+        {loading && <Spinner fullScreen />}
       </div>
-
-      <SearchBar value={search} onChange={setSearch} />
-
-      <div className="books-grid">
-        {books
-          .filter((b) => b.formats["image/jpeg"])
-          .map((b) => (
-            <BookCard key={b.id} book={b} onClick={() => openBook(b)} />
-          ))}
-      </div>
-      {loading && <Spinner />}
-    </div>
     </div>
   );
 }
