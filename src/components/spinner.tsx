@@ -1,6 +1,9 @@
-export default function Spinner() {
+interface Props {
+  fullScreen?: boolean;
+}
+export default function Spinner({ fullScreen = false }: Props) {
   return (
-    <div className="center-spin">
+    <div className={fullScreen ? "spinner-backdrop fullscreen" : "spinner-backdrop"}>
       <div className="spinner"></div>
     </div>
   );
