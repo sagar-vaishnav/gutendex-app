@@ -1,7 +1,7 @@
 /* OUTER BACKGROUND */
 .home-container {
   min-height: 100vh;
-  background: #F8F7FF url("/bg-pattern.svg");
+  background: #F8F7FF url("../icons/Pattern.svg");
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -104,4 +104,99 @@
     width: 24px;
     height: 24px;
     margin-right: 15px;
+}
+
+/* BUTTON STYLES */
+button {
+  font-family: var(--font-family);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 4px 12px rgba(94, 86, 231, 0.3);
+}
+
+button:hover {
+  background: #4a40c4;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(94, 86, 231, 0.4);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(94, 86, 231, 0.3);
+}
+
+button:disabled {
+  background: var(--grey-medium);
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* SECONDARY BUTTON VARIANT */
+button.secondary {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  box-shadow: none;
+}
+
+button.secondary:hover {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 6px 16px rgba(94, 86, 231, 0.4);
+}
+
+button.secondary:active {
+  box-shadow: 0 2px 8px rgba(94, 86, 231, 0.3);
+}
+
+/* LANGUAGE BUTTON GROUP */
+.language-buttons {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  z-index: 100;
+}
+
+.language-buttons button {
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  min-width: auto;
+  flex: none;
+}
+
+@media (max-width: 768px) {
+  .language-buttons {
+    top: 15px;
+    right: 15px;
+    gap: 6px;
+  }
+
+  .language-buttons button {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .language-buttons {
+    top: 10px;
+    right: 10px;
+    gap: 5px;
+  }
+
+  .language-buttons button {
+    padding: 6px 8px;
+    font-size: 10px;
+  }
 }

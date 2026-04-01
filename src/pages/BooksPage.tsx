@@ -10,6 +10,7 @@ import "../assets/css/BooksPage.css";
 import { ICONS } from "../constants/genres";
 import { getIcon } from "../utils/getIcons";
 import Spinner from "../components/spinner";
+import { t } from "../utils/i18n";
 
 export default function BooksPage() {
   const { genre } = useParams<{ genre: string }>();
@@ -46,8 +47,10 @@ export default function BooksPage() {
 
       if (reset) setBooks([]);
       const params: Record<string, string> = {
+        ids: "",
         topic: genre || "",
-        mime_type: "image",
+        languages: "en",
+        mime_type: "image"        
       };
 
       if (debouncedSearch) params.search = debouncedSearch;
@@ -107,11 +110,15 @@ export default function BooksPage() {
         <SearchBar value={search} onChange={setSearch} />
 
         <div className="books-grid">
-          {books
-            .filter((b) => b.formats["image/jpeg"])
-            .map((b) => (
-              <BookCard key={b.id} book={b} onClick={() => openBook(b)} />
-            ))}
+          {books.length > 0 ? (
+            books
+              .filter((b) => b.formats["image/jpeg"])
+              .map((b) => (
+                <BookCard key={b.id} book={b} onClick={() => openBook(b)} />
+              ))
+          ) : !loading ? (
+            <p className="no-results">{t("noData")}</p>
+          ) : null}
         </div>
         {loading && <Spinner fullScreen />}
       </div>
